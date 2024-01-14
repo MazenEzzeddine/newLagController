@@ -26,23 +26,29 @@ public class Main {
        // bp = new BinPackRestructure();
         //bp = new BinPackRestructureWithLag();
 
-        Lag.readEnvAndCrateAdminClient();
+        //Lag.readEnvAndCrateAdminClient();
+
+        ArrivalPrometheus.readEnvAndCrateAdminClient();
+
         log.info("Warming 15  seconds.");
         Thread.sleep(15 * 1000);
 
 
         while (true) {
             log.info("Querying Prometheus");
-            ArrivalProducer.callForArrivals();
+           // ArrivalProducer.callForArrivals();
+           // ArrivalPrometheus.getCommittedLatestOffsetsAndLag();
             //Lag.getCommittedLatestOffsetsAndLag();
-            Lag2.readTopicPartitionLags();
+            //Lag2.readTopicPartitionLags();
            // scaleLogic();
             log.info("--------------------");
             log.info("--------------------");
-            log.info("Sleeping for 500 seconds");
+            log.info("Sleeping for 1000 seconds");
             log.info("******************************************");
             log.info("******************************************");
-            Thread.sleep(250);
+
+            ArrivalRates.arrivalRateTopic1();
+            Thread.sleep(1000);
         }
     }
 
